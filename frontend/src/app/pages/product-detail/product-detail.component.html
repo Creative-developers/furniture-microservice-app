@@ -1,0 +1,44 @@
+<section class="product-details" *ngIf="product">
+    <div class="container mx-auto py-5">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>{{product.price}}$</mat-card-subtitle>
+            <img mat-card-xl-image [src]="getImage()" alt="{{product.name}}">
+          </mat-card-title-group>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p class="py-4">{{product.description}}</p>
+        </mat-card-content>
+      </mat-card>
+
+
+      
+      <mat-card class="mt-5">
+        <mat-card-header class="flex flex-col">
+          <mat-card-title>Comments</mat-card-title>
+          <button class="block" mat-raised-button color="primary" (click)="filterComments()">Filter Comments by orange word</button>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list *ngIf="comments.length; else noComments">
+            <ng-container *ngFor="let comment of comments; let i=index">
+                <app-comment-item [comment]="comment"></app-comment-item>
+              <mat-divider *ngIf="i < comments.length -1"></mat-divider>
+            </ng-container>
+          </mat-list>
+          <ng-template #noComments>
+            <p class="py-2">No Comments found...</p>
+          </ng-template>
+          
+        </mat-card-content>
+      </mat-card>
+  
+      <!----Comment Create Component here ------>
+      <div class="mt-5">
+          <app-comment-create (commentCreated)="onCommentCreated($event)" [productId]="product._id"></app-comment-create>
+      </div>
+    </div>
+  </section>
+  

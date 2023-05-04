@@ -1,0 +1,21 @@
+<section class="products-section py-5">
+    <div class="container mx-auto">
+        <div class="flex justify-end">
+           <button mat-raised-button color="link" (click)="openDialog()">Create Product</button>
+        </div>
+        <div class="itmes--list mt-5">
+            <div *ngIf="products.length; else noProducts">  
+                <mat-grid-list cols="3"  rowHeight="460px">
+                    <mat-grid-tile *ngFor="let product of products">
+                    <app-product-item [product]="product"></app-product-item>
+                    </mat-grid-tile>
+                </mat-grid-list>
+             </div>
+             <ng-template #noProducts>
+                <p class="text-center">No Products found...</p>
+             </ng-template>
+                
+        </div>   
+
+    </div>   
+</section>

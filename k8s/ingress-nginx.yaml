@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+   nginx.ingress.kubernetes.io/rewrite-target: /$2
+   kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /client(/|$)(.*)
+            pathType: Prefix
+            backend:
+                service:
+                  name: client
+                  port:
+                    number: 80
+          - path: /product-service(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 80
+          - path: /comment-service(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: comment-service
+                port:
+                  number: 80
+          - path: /filter-service(/|$)(.*)
+            pathType: Prefix
+            backend:
+               service: 
+                  name: filter-service
+                  port:
+                   number: 80         

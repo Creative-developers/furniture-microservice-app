@@ -1,0 +1,20 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+metadata:
+  name: furniture-app
+build:
+  artifacts:
+  - image: product-service
+    context: product-service/
+  - image: comment-service
+    context: comment-service/
+  - image: filter-service
+    context: filter-service/  
+  - image: client
+    context: frontend/
+    
+manifests:
+  rawYaml:
+    - k8s/*
+deploy:
+  kubectl: {}

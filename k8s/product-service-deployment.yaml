@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service
+          image: product-service:latest
+          resources:
+             limits:
+               cpu: "1" 
+               memory: "512Mi"
+          ports:
+          - containerPort: 3000

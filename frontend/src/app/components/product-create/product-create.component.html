@@ -1,0 +1,46 @@
+<section class="product-create p-2 ">
+    <h2>Create Product</h2>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+     <div class="flex flex-col">
+      <mat-form-field appearance="fill">
+        <mat-label>Product Name</mat-label>
+        <input matInput formControlName="name" placeholder="Product Name" />
+        <mat-error *ngIf="productForm.controls['name'].invalid && productForm.controls['name'].touched">
+          Product name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+         <mat-label>Product Price</mat-label>
+        <input matInput formControlName="price" placeholder="Product Price">
+        <mat-error *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched">
+          Product price is required and must be a number.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Product Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Product Description"></textarea>
+        <mat-error *ngIf="productForm.controls['description'].invalid && productForm.controls['description'].touched">
+          Product description is required.
+        </mat-error>
+      </mat-form-field>
+      <div class="mb-3">
+        <mat-label class="block mb-2">Product Image</mat-label>
+        
+        <input type="file" #file id="myFile" formControlName="image" (change)="onFileSelected($event)"
+        accept="images/*" class="d-none" alt="Upload">
+          <mat-error *ngIf="productForm.controls['image'].touched  && productForm.controls['image'].errors?.['required']">
+          Image is required.
+         </mat-error>
+        <mat-error *ngIf="productForm.controls['image'].errors?.['imageType']">
+           Only JPG, JPEG and PNG images are allowed.
+        </mat-error>
+        <mat-error *ngIf="productForm.controls['image'].errors?.['maxSize']">
+          Max file size is 2MB
+        </mat-error>
+      </div>
+      <button mat-raised-button color="primary" type="submit">Create</button>
+      </div>
+    </form>
+  </section>
+  
