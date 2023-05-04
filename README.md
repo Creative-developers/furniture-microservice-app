@@ -7,6 +7,7 @@ Comment Service: Microservice for managing comments on products, running on loca
 Filter Service: Microservice for filtering products based on user preferences, running on localhost/filter-service
 
 #Installation and Setup
+
 ##Clone the repository: git clone https://github.com/Creative-developers/furniture-microservice-app.git
 ##Install dependencies for each service by navigating to the service directory and running npm install.
 ##Start each service by navigating to the service directory and running npm start.
