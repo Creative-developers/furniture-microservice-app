@@ -12,4 +12,5 @@ This is a sample microservices-based application for a furniture store. The appl
 1. Clone the repository: `git clone https://github.com/Creative-developers/furniture-microservice-app.git`
 2. Install dependencies for each service by navigating to the service directory and running `npm install`.
 3. Start each service by navigating to the service directory and running `npm start`.
+4. For Running Skaffold run skaffold dev to build, push all the microservices and client app to the local kubernets cluster
 
